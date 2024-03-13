@@ -1,5 +1,6 @@
+
 from models import user
-import re
+from .patterns import validate_password, validate_login
 
 
 class AuthBusinessLogic:
@@ -7,14 +8,9 @@ class AuthBusinessLogic:
         pass
 
     def login_user(self, login, password):
-        data_validated = False
-        login_success = False
-
-        user_login_pattern = r'^[a-zA-Z0-9_-]{3,16}$'
-        user_password_pattern = r'^[a-zA-Z0-9_-]{3,16}$'
-
-        if re.match(user_login_pattern, login) == False and re.match(user_password_pattern, password) == False:
-            return login_success
+       
+        if validate_login(login) and validate_password(password):
+            login_success = True
 
         user_object = user.User()
         logged_in_user = user_object.get_user(

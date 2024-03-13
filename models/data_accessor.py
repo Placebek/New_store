@@ -7,7 +7,7 @@ from psycopg2 import sql
 
 
 class DataAccessor:
-    def __init__(self, database='Hokken', user='postgres', password='duck1234', host='localhost', port='5432'):
+    def __init__(self, database='Hokken', user='postgres', password='chydo.chydnoe', host='localhost', port='5432'):
         self.database = database
         self.user = user
         self.password = password
@@ -19,7 +19,7 @@ class DataAccessor:
 
     def create_table(self, table_name, columns):
         self.__open_connection()
-        print("DDDDD:", columns)
+        print("Columns:", columns)
 
         sql_create_table = f'CREATE TABLE IF NOT EXISTS {table_name} ({columns})'
 
@@ -66,14 +66,12 @@ class DataAccessor:
 
     def select_data(self, table_name, fields, condition):
         self.__open_connection()
-
         fields_string = ""
 
         for field in fields:
             fields_string += "%s, "%field
 
         fields_string = fields_string[:-2]
-
         if condition == None:
             sql = f"SELECT {fields_string} FROM {table_name}"
         else:
@@ -86,17 +84,12 @@ class DataAccessor:
                 where_string = where_string[:-5]
 
             sql = f"SELECT {fields_string} FROM {table_name} WHERE {where_string}"
-
             print("ЗАПРОС: ", sql)
 
         self.cursor = self.conn.cursor()
-
         self.cursor.execute(sql)
-
         table_data = self.cursor.fetchall()
-
         self.__close_connection()
-
         return table_data
 
     def __open_connection(self):
