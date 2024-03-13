@@ -1,4 +1,3 @@
-
 from models import user
 from .patterns import validate_password, validate_login
 
@@ -26,5 +25,7 @@ class AuthBusinessLogic:
 
         return login_success
 
-    def register_user(self, login, password, first_name, last_name):
-        pass
+    def register_user(self):
+        
+        user_object = user.User()
+        user_object.create_user()

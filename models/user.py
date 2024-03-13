@@ -13,12 +13,12 @@ class User:
             "login": login,
             "password": password,
             "first_name": first_name,
-            "last_name": last_name,
+            "last_name": last_name
         }
 
-    def create_user(self):
+    def create_user(self ):
         self.data_accessor.insert_data(
-            table_name=self.table_name,
+            table_name="users",
             data=self.columns_values
         )
 

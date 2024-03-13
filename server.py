@@ -1,6 +1,7 @@
 
 from flask import Flask, render_template, request, redirect, session
 from business_logic.auth_business_logic import AuthBusinessLogic
+from models.user import User
 
 
 app = Flask(__name__)
@@ -20,9 +21,21 @@ def login():
     if request.method == "POST":
         login = request.form['login']
         password = request.form['password']
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+
+        datalar = {
+            "login": login,
+            "password": password,
+            "first_name": first_name,
+            "last_name": last_name
+        }
 
         auth_business_logic = AuthBusinessLogic()
         login_successful = auth_business_logic.login_user(login=login, password=password)
+
+        register_user = User()
+        register_user.create_user(data = datalar)
         session["logged_in_user"] = "Жандарбек" # осы жерге user-дің first_name, last_name жолдарын жазу керек
 
         if login_successful == False:
