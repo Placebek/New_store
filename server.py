@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, redirect, session
 from business_logic.auth_business_logic import AuthBusinessLogic
 from models.user import User
@@ -36,12 +35,12 @@ def login():
 
         register_user = User()
         register_user.create_user(data = datalar)
-        session["logged_in_user"] = "Жандарбек" # осы жерге user-дің first_name, last_name жолдарын жазу керек
+
+        session["logged_in_user"] = first_name, last_name # осы жерге user-дің first_name, last_name жолдарын жазу керек
 
         if login_successful == False:
             return render_template("login.html", error="Incorrect login or password")
 
-        session["logged_in_user"] = "Жандарбек" # осы жерге user-дің first_name, last_name жолдарын жазу керек
 
         return redirect('/')
 

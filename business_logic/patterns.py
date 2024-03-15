@@ -12,3 +12,8 @@ def validate_password(password):
            re.search(r"[A-Z]", password) and \
            re.search(r"\d", password) and \
            re.search(r"[!@#$%^&*()-+=.,]", password)
+
+def validate_name(first_name):
+    return 2 <= len(first_name) <= 30 and \
+           re.search(r"[a-z]", first_name) and \
+           re.search(r"[A-Z]", first_name)

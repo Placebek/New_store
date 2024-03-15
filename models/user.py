@@ -16,11 +16,12 @@ class User:
             "last_name": last_name
         }
 
-    def create_user(self ):
-        self.data_accessor.insert_data(
+    def create_user(self, data):
+        register = self.data_accessor.insert_data(
             table_name="users",
-            data=self.columns_values
+            data=data
         )
+        return register
 
     def get_user(self, fields, condition):
         selected_user = self.data_accessor.select_data(
