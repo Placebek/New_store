@@ -20,6 +20,7 @@ def login():
         email = request.form['email']
         phone_number = request.form['phone_number']
         password = request.form['password']
+        password2 = request.form['password2']
         
         
 
@@ -31,7 +32,9 @@ def login():
 
         login_successful = auth_business_logic.login_user(email=email, password=password)
         if login_successful == False:
-            return render_template("login.html", error="Incorrect login or password")
+            return render_template("login.html", error="Email или пароль введен не корректно")
+        if  password != password2:
+            return render_template("login.html", error="Ваши введенные пароли не совпадают")
         
         name_successful = auth_business_logic.register_user(email=email, password=password, phone_number=phone_number)
         if name_successful == False:
