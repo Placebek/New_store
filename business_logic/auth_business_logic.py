@@ -1,20 +1,22 @@
 from models import user
-from .patterns import validate_password, validate_login, validate_name
+from .patterns import validate_password, validate_login, validate_phone_number
 
 
 class AuthBusinessLogic:
     def __init__(self) -> None:
         pass
 
-    def login_user(self, login, password):
+    def login_user(self, email, password):
        
-        if validate_login(login) and validate_password(password) :
+        if validate_login(email) and validate_password(password) :
             login_success = True
+        else:
+            login_success = False
 
         user_object = user.User()
         logged_in_user = user_object.get_user(
             ["id"], condition={
-                "login": login,
+                "email": email,
                 "password": password,
             }
         )
@@ -25,23 +27,22 @@ class AuthBusinessLogic:
 
         return login_success
 
-    def register_user(self, login, password, first_name, last_name):
+    def register_user(self, email, phone_number, password):
+        name_success = False
 
-        if validate_name(first_name) and validate_name(last_name):
+        if validate_phone_number(phone_number):
             name_success = True
 
-        user_object = user.User()
-        register_in_user = user_object.create_user(
-            ["id"], data={
-                "login": login,
+            data = {
+                "email": email,
+                "phone_number": phone_number,
                 "password": password,
-                "first_name": first_name,
-                "last_name": last_name
             }
-        )
 
-        if register_in_user != []:
-            # logged_in_user=('1', 'asd', 'asd', 'first_name', 'last_name')
-           name_success = True
+            user_object = user.User()
+            register_in_user = user_object.create_user(data=data)
+
+            if register_in_user is not None:
+                name_success = True
 
         return name_success

@@ -1,7 +1,7 @@
 import re
 
-def validate_login(login):
-    return 3 <= len(login) <= 30
+def validate_login(email):
+    return 3 <= len(email) <= 100
 
 def validate_password(password):
     # Минимальная длина 6 символов, максимальная 30
@@ -13,7 +13,7 @@ def validate_password(password):
            re.search(r"\d", password) and \
            re.search(r"[!@#$%^&*()-+=.,]", password)
 
-def validate_name(first_name):
-    return 2 <= len(first_name) <= 30 and \
-           re.search(r"[a-z]", first_name) and \
-           re.search(r"[A-Z]", first_name)
+def validate_phone_number(number):
+    # Паттерн для проверки казахстанских номеров телефона
+    pattern = re.compile(r"^\+7\d{10}$")
+    return pattern.match(number) is not None

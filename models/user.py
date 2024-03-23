@@ -5,15 +5,15 @@ class User:
     """
         Қолданушылар кестесінің моделі
     """
-    def __init__(self, login=None, password=None, first_name=None, last_name=None):
+    def __init__(self, email=None, phone_number=None, password=None):
         self.data_accessor = DataAccessor()
         self.table_name = "users"
 
         self.columns_values = {
-            "login": login,
+            "email": email,
+            "phone_number": phone_number,
             "password": password,
-            "first_name": first_name,
-            "last_name": last_name
+        
         }
 
     def create_user(self, data):
@@ -35,5 +35,8 @@ class User:
     def init_table(self):
         self.data_accessor.create_table(
             table_name=self.table_name,
-            columns = ('id Serial Primary key, first_name varchar(50), last_name varchar(50), login varchar(50), password varchar(50)'),
+            columns = ('id Serial Primary key, email varchar(100), phone_number int, password varchar(50)'),
         )
+    
+    def drop_table(self):
+        self.data_accessor.drop_table(table_name=self.table_name)

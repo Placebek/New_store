@@ -12,17 +12,15 @@
             </div>
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
+          
+            
             <div class="form-floating">
-                <input type="name" class="form-control" id="first_name" name="first_name" placeholder="Name">
-                <label for="floatingPassword">First name</label>
+                <input type="text" class="form-control" id="login" name="email" placeholder="Your email">
+                <label for="floatingInput">E-mail</label>
             </div>
             <div class="form-floating">
-                <input type="name" class="form-control" id="last_name" name="last_name" placeholder="Name">
-                <label for="floatingPassword">Last name</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="login" name="login" placeholder="Your login">
-                <label for="floatingInput">Login</label>
+                <input type="name" class="form-control" id="phone_number" name="phone_number" placeholder="phone">
+                <label for="floatingPassword">Номер телефона</label>
             </div>
             <div class="form-floating">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
@@ -36,6 +34,7 @@
                     Remember me
                 </label>
             </div>
+             <a href="/auth"><p class="mt-5 mb-3 text-body-secondary">Already have an account?</p></a>
             <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
             <p class="mt-5 mb-3 text-body-secondary">© 2017–2024</p>
         </form>
