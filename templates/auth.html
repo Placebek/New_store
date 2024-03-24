@@ -1,0 +1,32 @@
+{% extends "shablon.html" %} 
+{% block title %}Login{% endblock %} 
+{% block body %}
+<div class="container">
+    <main class="form-signin w-100 m-auto">
+        <form method="POST" action="/auth">
+            <img class="mb-4" src="/static/images/Ikonka.png" alt="" width="72" height="72">
+            <div class="text-danger">
+                {% if error %}
+                    {{ error }}
+                {% endif %}
+            </div>
+            <h1 class="h3 mb-3 fw-normal">Пожалуйста введите данные чтобы войти</h1>
+
+          
+            
+            <div class="form-floating">
+                <input type="text" class="form-control" id="login" name="email" placeholder="email">
+                <label for="floatingInput">Введите адрес электронной почты</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                <label for="floatingPassword">Введите ваш пароль</label>
+            </div> 
+            <br></br>
+            
+            <button class="btn btn-primary w-100 py-2" type="submit">Войти</button>
+            <p class="mt-5 mb-3 text-body-secondary">© 2017–2024</p>
+        </form>
+    </main>
+</div>
+{% endblock %}

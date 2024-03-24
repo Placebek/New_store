@@ -26,9 +26,6 @@ def login():
 
         auth_business_logic = AuthBusinessLogic()
 
-        
-       
-        
 
         login_successful = auth_business_logic.login_user(email=email, password=password)
         if login_successful == False:
@@ -40,16 +37,29 @@ def login():
         if name_successful == False:
             return render_template("login.html", error="Ваш номер телефона не корректный")
 
-        
-        
-
+    
         # session["logged_in_user"] = first_name
-
-
 
         return redirect('/')
 
     return render_template("login.html")
+
+
+@app.route('/auth', methods=['GET', 'POST'])
+def auth():
+    if request.method == 'POST':
+        email = request.form["email"]
+        password = request.form["password"]
+
+        auth_check = AuthBusinessLogic()
+        auth_successful = auth_check.auth_user(email=email, password=password)
+        if auth_successful == False:
+            return render_template("auth.html", error="Ваш email или пароль не правильный, пожалуйста введите еще раз")
+        
+        return redirect('/')
+
+    return render_template("auth.html")
+
 
 
 @app.route('/products', methods=['GET', 'POST'])

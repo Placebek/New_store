@@ -15,7 +15,7 @@ class AuthBusinessLogic:
 
         user_object = user.User()
         logged_in_user = user_object.get_user(
-            ["id"], condition={
+            ["*"], condition={
                 "email": email,
                 "password": password,
             }
@@ -46,3 +46,21 @@ class AuthBusinessLogic:
                 name_success = True
 
         return name_success
+
+
+    def auth_user(self, email, password):
+        auth_success = False
+
+        
+        user_object = user.User()
+        logged_in_user = user_object.get_user(
+            ["*"], condition={
+                "email": email,
+                "password": password,
+            }
+        )
+
+        if logged_in_user != []:
+            auth_success = True
+
+        return auth_success

@@ -12,25 +12,30 @@
 			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 			crossorigin="anonymous"
 		/>
+    <link rel="stylesheet" href="/static/css/redact.css">
+
 	</head>
 	<body>
 		<header class="p-3 text-bg-dark">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/static/images/Ikonka.png" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="static/images/ikonka.png"></use></svg>
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="/static/images/Ikonka.png"></use></svg>
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="/" class="nav-link px-2 text-white">Главная страница</a></li>
-
-         
+          <li><a href="/catolog" class="nav-link px-2 text-white">Католог товаров</a></li>
         </ul>
   
         
 
         <div class="text-end">
-          <a href="/login" class="btn btn-outline-light me-2">Log in</a>
+          <button type="button"id='menu_window' class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          =-=
+          </button>
+
+          
         </div>
       </div>
     </div>
@@ -85,3 +90,5 @@
 		
 	</body>
 </html>
+
+
