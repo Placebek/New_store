@@ -7,9 +7,9 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 @app.route('/')
 def index():
-    print("SESSION:   ", session["logged_in_user"])
+    print("SESSION: ", session["logged_in_user"])
     if session["logged_in_user"] != None:
-        return render_template("index.html", user=session["logged_in_user"])
+        return render_template("index.html", email=session["logged_in_user"])
 
     return render_template("index.html")
 
@@ -37,8 +37,9 @@ def login():
         if name_successful == False:
             return render_template("login.html", error="Ваш номер телефона не корректный")
 
+        if login_successful == False or name_successful == False or password != password2:
+            session["logged_in_user"] = "None"
     
-        # session["logged_in_user"] = first_name
 
         return redirect('/')
 

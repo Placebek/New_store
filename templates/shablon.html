@@ -39,9 +39,6 @@
                   <li><a class="dropdown-item" href="#">Велоспорт</a></li>
                   <li><a class="dropdown-item" href="#">Спорт с мячом</a></li>
                   <li><a class="dropdown-item" href="#">Другие товары</a></li>
-
-
-
                 </ul>
               </li>
             </ul>
@@ -55,12 +52,19 @@
                 |||
               </button>
               <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="/auth">Войти</a></li>
-                <li><a class="dropdown-item" href="/login">Регистрация</a></li>
-                <li><a class="dropdown-item" href="#"></a></li>
+                {% if email %}
+                  <li><a class="dropdown-item" href="/profil">Профиль</a></li>
+                  <li><a class="dropdown-item" href="/address">Добавить адрес</a></li>
+                {% else %}
+                  <li><a class="dropdown-item" href="/auth">Войти</a></li>
+                  <li><a class="dropdown-item" href="/login">Регистрация</a></li>
+                {% endif %}
+                
               </ul>
             </li>
           </ul>
+
+          
       
 
 
